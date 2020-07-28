@@ -8,13 +8,17 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'gcc test.c'
+        sh '''pwd
+ls
+gcc test.c'''
       }
     }
 
     stage('run') {
       steps {
-        sh './a.out'
+        sh '''pwd
+ls
+./a.out'''
       }
     }
 
