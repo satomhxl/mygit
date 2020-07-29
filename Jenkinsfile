@@ -24,9 +24,14 @@ mkdir subDir'''
               sh '''pwd
 ls'''
               git(url: 'https://github.com/satomhxl/jenkinsTest.git', branch: 'master', credentialsId: 'github-id')
+              sh '''pwd
+ls
+gcc test.c'''
             }
 
-            sh 'gcc test.c'
+            sh '''pwd
+ls
+gcc test.c'''
           }
         }
 
