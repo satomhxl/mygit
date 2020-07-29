@@ -7,18 +7,53 @@ pipeline {
   }
   stages {
     stage('build') {
-      steps {
-        sh '''pwd
+      parallel {
+        stage('build') {
+          steps {
+            sh '''pwd
 ls
 gcc test.c'''
+          }
+        }
+
+        stage('clone another repository') {
+          steps {
+            sh '''rm -rf subDir
+mkdir subDir'''
+            dir(path: 'subDir') {
+              sh '''pwd
+ls'''
+              git(url: 'https://github.com/satomhxl/jenkinsTest.git', branch: 'master', credentialsId: 'github-id')
+            }
+
+            sh 'gcc test.c'
+          }
+        }
+
       }
     }
 
     stage('run') {
-      steps {
-        sh '''pwd
+      parallel {
+        stage('run') {
+          steps {
+            sh '''pwd
 ls
 ./a.out'''
+          }
+        }
+
+        stage('run another repository') {
+          steps {
+            dir(path: 'subDir') {
+              sh '''pwd
+ls
+./a.out'''
+            }
+
+          }
+        }
+
       }
     }
 
