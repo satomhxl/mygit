@@ -3,6 +3,6 @@
 
 int main()
 {
-    printf("hello world\n");
+    printf("this is a test string\n");
     return 0;
 }
