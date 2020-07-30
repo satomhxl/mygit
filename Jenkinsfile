@@ -5,6 +5,9 @@ pipeline {
     }
 
   }
+  triggers {
+      pollSCM('H/1 * * * *')
+  }
   stages {
     stage('build') {
       parallel {
@@ -62,8 +65,5 @@ ls
       }
     }
 
-  }
-  triggers {
-      pollSCM('H/1 * * * *')
   }
 }
