@@ -5,7 +5,7 @@ pipeline {
     }
 
   }
-  triggers { pollSCM('H/1 * * * *') }
+  triggers { pollSCM('H H/1 * * 1-5') }
   stages {
     stage('build') {
       parallel {
