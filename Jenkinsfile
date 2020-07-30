@@ -64,6 +64,6 @@ ls
 
   }
   triggers {
-      pollSCM('H * * * *')
+      pollSCM('*/1 * * * *')
   }
 }
